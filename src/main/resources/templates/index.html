@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎页</title>
+    <!--css-->
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <!--js-->
+    <script src="/webjars/jquery/1.12.4/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="col-sm-12 text-center">
+    <h1>欢迎来到Security Login引导页！</h1>
+    <h3>我是你的私人秘书MM</h3>
+    <hr />
+    <!--<h5><a href="login/userName">用户名密码登录页</a></h5>-->
+    <!--<h5><a href="login/mobile">手机验证码登录页</a></h5>-->
+    <!--<h5><a href="login/test">登录测试页面</a></h5>-->
+    <h1>用户名密码登录页！</h1>
+    <!--<a href="/login/mobile">手机号登录</a>-->
+    <hr/>
+    <!--<form action="/login" method="post">-->
+        用户名:<input type="text" id="username" name="username"><br/>
+        密xx码:<input type="password" id="password" name="password"><br/>
+        <!--验证码:<input type="text" name="code"><br/>-->
+        <!--<img id="iamge" onclick="getImage()" src="/code/image"/><br/>-->
+        <!--<input name="remember-me" type="checkbox" value="true"/>记住我</td>-->
+        <button onclick="login()">登录</button>
+    <!--</form>-->
+</div>
+<script>
+    function login() {
+    //    获取值
+        var data ={
+            username:$("#username").val(),
+            password:$("#password").val()
+        }
+        console.log(data);
+        $.ajax({
+            url:"/login",
+            type:"post",
+            headers: {
+                'Authorization':"Basic bXJhaW46MTIzNDU2"
+            },
+            data:data,
+            success:function(response){
+                console.log(response);
+            },
+            error:function(response) {
+                console.log(response);
+            }
+        });
+    }
+</script>
+</body>
+</html>
